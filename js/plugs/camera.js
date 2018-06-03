@@ -86,7 +86,7 @@ var camera = function(){
     //canvas转图片
     _self.canvasTrfImg = function(opts){
 		var type = opts.type || 'jpg';
-		var quality = opts.quality || 0.8;
+		var quality = opts.quality || 1;
 		var secretkey = opts.secretkey || "loop_test";
 		var callback = opts.callback || false;
 
@@ -106,9 +106,10 @@ var camera = function(){
     _self.base64TrfImg = function(data,callback,secretkey){
     	var key = secretkey || "loop_test";
     	loadBox.show();
-		$.post('http://upload.be-xx.com/upload', { data: data, key: key }, function (resp) {
+		$.post('http://jiadeshi.betaty.com/handler/proc.ashx', { method:"Save",img:data,ext:"jpg",name:_self.userName,pro:_self.userPro}, function (resp) {
 			loadBox.hide();
-			if(callback) callback(resp);
+			resp = eval('(' + resp + ')'); 
+			if(callback) callback("http://jiadeshi.betaty.com"+resp.result);
         });
     }//end func
 

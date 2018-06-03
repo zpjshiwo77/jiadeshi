@@ -334,7 +334,7 @@ section.photoBox .kuang .cont .tips{
 	width: 2.67rem;
 	height: 0.63rem;
 	background-image: url('../images/edit/w.png');
-	margin: 0.6rem auto 1rem;
+	margin: 0.6rem auto;
 }
 section.photoBox .kuang .cont .tips .ar{
 	position: absolute;
@@ -347,7 +347,7 @@ section.photoBox .kuang .cont .tips .ar{
 }
 section.photoBox .kuang .cont .words{
 	width: 5.4rem;
-	height: 4.4rem;
+	height: 4.8rem;
 	margin: 0 auto;
 	background: rgba(0,0,0,0.3);
 	border: 1px solid #fff;

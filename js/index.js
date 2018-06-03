@@ -89,7 +89,7 @@ $(document).ready(function(){
 
 	var nowPage = 0;
 	var boxs = [formBox,sloganBox,photoBox,editBox,resultBox];
-	var slogans = ["超越性能极限，领略精彩出行！","超越性能极限，领略精彩出行！2","超越性能极限，领略精彩出行！3"];
+	var slogans = [];
 	var icamera;
 	var iFormInfo = {
 		name:"",
@@ -103,7 +103,6 @@ $(document).ready(function(){
 	//页面初始化
 	function pageInit(){
 		yearSelectInit();
-		requestSlogans();
 		cameraInit();
 		eventInit();
 	}//end func
@@ -145,7 +144,7 @@ $(document).ready(function(){
 	function cameraInit(){
 		icamera = new camera();
 		var options = {
-			scale:2,
+			scale:3,
 			filter:false,
 			loadBox:loadBox,
 			cameraBtn:$("#cameraBtn"),
@@ -187,9 +186,9 @@ $(document).ready(function(){
 			color:"#fff",
 			x:delPX(wordBox.css('left'))/2,
 			y:delPX(wordBox.css('top'))/2,
-			fontSize:delPX(wordBox.css('fontSize'))/1.5,
-			lineHeight:1.5,
-			maxNum:11
+			fontSize:delPX(wordBox.css('fontSize'))/1.8,
+			lineHeight:1.3,
+			maxNum:13
 		};
 		icamera.addTextLayer("slogan",iFormInfo.slogan,sloganopts);
 
@@ -248,6 +247,10 @@ $(document).ready(function(){
 		else if(iFormInfo.pro == "") icom.alert("请选择您使用的加德士产品！");
 		else if(iFormInfo.year == "") icom.alert("请选择从何时开始使用此款产品！");
 		else {
+			slogans = wordData[iFormInfo.pro];
+			changeSlogan();
+			icamera.userName = iFormInfo.name;
+			icamera.userPro = iFormInfo.pro == "1" ? "德乐" : "金富力";
 			nextPage();
 			submitInfo();
 		}
@@ -274,11 +277,6 @@ $(document).ready(function(){
 	//提交信息 AJAX
 	function submitInfo(){
 		console.log(iFormInfo)
-	}//end func
-
-	//请求标语 AJAX
-	function requestSlogans(){
-
 	}//end func
 
 	//选择产品

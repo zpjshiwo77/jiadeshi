@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>微信竖屏模板页</title>
+<title>加德士</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
@@ -19,6 +19,128 @@ ibase.load('css/index.css');//无缓存加载文件
 <body>
 <!--------------------------------------------------------------html区域-------------------------------------------------------------------------------------------->
 <article>
+	<section class="formBox ">
+		<div class="logo1"></div>
+		<div class="logo2"></div>
+		<div class="cont">
+			<div class="label">
+				<p>请输入您的姓名：</p>
+				<input type="text" id="name" maxlength="6">
+			</div>
+			<div class="label">
+				<p>请输入您的车型或设备</p>
+				<input type="text" id="pro">
+			</div>
+			<div class="label sp">
+				<p>请选择您使用的加德士产品：</p>
+				<div class="option ol" data-val="1">德 乐</div>
+				<div class="option or" data-val="2">金富力</div>
+			</div>
+			<div class="label select">
+				<p>您从何时开始使用此款产品：</p>
+				<select id="year"></select>
+			</div>
+			<div class="arRBtn">
+				<div class="arR"></div>
+				<div class="ContinueBtn"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="sloganBox none">
+		<div class="logo1"></div>
+		<div class="logo2"></div>
+		<div class="cont">
+			<div class="kuang">
+				<div class="title"></div>
+				<p>请挑选您的感言：</p>
+				<div class="word">超越性能极限，领略精彩出行！</div>
+				<div class="changeBtn"></div>
+				<input type="text" id="slogan" placeholder="您也可手动输入感言（50字内）" maxlength="50">
+			</div>
+			<div class="arLBtn">
+				<div class="arL"></div>
+				<div class="backBtn"></div>
+			</div>
+			<div class="arRBtn">
+				<div class="arR"></div>
+				<div class="ContinueBtn"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="photoBox none">
+		<div class="kuang">
+			<div class="cont">
+				<div class="previewBox"></div>
+				<div class="btn" id="cameraBtn"></div>
+				<div class="tips">
+					<div class="ar arTing"></div>
+				</div>
+				<div class="words">
+					<div class="title"></div>
+					<p class="name"></p>
+					<p class="word"></p>
+				</div>
+				<div class="arLBtn">
+					<div class="arL"></div>
+					<div class="backBtn"></div>
+				</div>
+				<div class="arRBtn">
+					<div class="arR"></div>
+					<div class="ContinueBtn"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="editBox hide">
+		<div class="sloganDemo hide">
+			<div class="title">0</div>
+			<div class="word">0</div>
+		</div>
+		<div class="cont">
+			<div class="photoBox" id="photoContainer">
+				<div class="photo"></div>
+				<div id="stkRemoveBtn"></div>
+			</div>
+			<div class="tips"></div>
+			<div class="arLBtn">
+				<div class="arL"></div>
+				<div class="againBtn"></div>
+			</div>
+			<div class="arRBtn">
+				<div class="arR"></div>
+				<div class="okBtn"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="resultBox none">
+		<div class="cont">
+			<div class="arLBtn">
+				<div class="arL"></div>
+				<div class="againBtn"></div>
+			</div>
+			<img src="images/edit/kuang2.png" class="show">
+			<div class="tipsBtn"></div>
+			<img src="images/edit/kuang2.png" class="down hide">
+		</div>
+	</section>
+
+	<aside id="tips" class="none">
+		<div class="cont">
+			<div class="word">
+				<h3>本人同意加德士公司使用本人肖像权</h3>
+				<div class="btns">
+					<div class="btn no"></div>
+					<div class="btn yes"></div>
+				</div>
+				<p>加德士有权根据实际情况的需要对于带有您的肖像的作品进行、修改，并不需经过用户的同意。
+				<br>加德士承诺将依照《中华人民共和国广告法》和《中华人民共和国民法通则》法律，绝不损害您享有的合法权益。</p>
+			</div>
+		</div>
+	</aside>
 </article>
 <!--------------------------------------------------------------javascript区域-------------------------------------------------------------------------------------->
 <script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
@@ -28,6 +150,9 @@ ibase.load('css/index.css');//无缓存加载文件
 <script src="js/base/share.js"></script>
 <script src="http://bamboo.api.be-xx.com/js/loop_api.js"></script>
 <script src="js/base/user.js"></script>
+<script src="js/base/reader.js"></script>
+<script src="js/canvas/jcanvas.min.js"></script>
+<script src="js/plugs/camera.js"></script>
 <script>ibase.load('js/index.js');</script>
 </body>
 </html>

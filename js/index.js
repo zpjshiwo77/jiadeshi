@@ -11,7 +11,7 @@ $(document).ready(function(){
 	
 	function init(){
 		requestAnimationFrame(function(){
-//			loadBox.show();
+			loadBox.show();
 			iuser.init(userGetted);
 //			load_handler();
 		});
@@ -19,52 +19,292 @@ $(document).ready(function(){
 	
 	//----------------------------------------微信用户登录验证----------------------------------------	
 	function userGetted(data){
-		console.log('用户头像：'+data.headimage);
-		console.log('用户昵称：'+data.nickname);
-		console.log('用户地区：'+data.province);
-		console.log('用户性别：'+data.sex);
-		console.log(iuser.info);
 		load_handler();
 	}//end func
 	
 	//----------------------------------------加载页面图片----------------------------------------
 	function load_handler(){
 		var loader = new PxLoader();
+		loader.addImage('images/share.jpg');
+		loader.addImage('images/index/bg.jpg');
+		loader.addImage('images/index/k.png');
+		loader.addImage('images/index/ka.png');
+		loader.addImage('images/edit/abtn.png');
+		loader.addImage('images/edit/ar.png');
+		loader.addImage('images/edit/bg1.jpg');
+		loader.addImage('images/edit/bg2.jpg');
+		loader.addImage('images/edit/bg3.jpg');
+		loader.addImage('images/edit/cbtn.png');
+		loader.addImage('images/edit/d.png');
+		loader.addImage('images/edit/kuang1.png');
+		loader.addImage('images/edit/kuang2.png');
+		loader.addImage('images/edit/no.png');
+		loader.addImage('images/edit/tips.png');
+		loader.addImage('images/edit/title1.png');
+		loader.addImage('images/edit/title2.png');
+		loader.addImage('images/edit/u.png');
+		loader.addImage('images/edit/w.png');
+		loader.addImage('images/edit/wbtn.png');
+		loader.addImage('images/edit/yes.png');
+		loader.addImage('images/common/arL.png');
+		loader.addImage('images/common/arR.png');
+		loader.addImage('images/common/bgm_off.png');
+		loader.addImage('images/common/bgm_on.png');
+		loader.addImage('images/common/blank.png');
+		loader.addImage('images/common/logo1.png');
+		loader.addImage('images/common/logo2.png');
+		loader.addImage('images/common/share.png');
+		loader.addImage('images/common/turn_lock.png');
+		loader.addImage('images/common/turn_no.png');
 		loader.addImage('images/common/turn_phone.png');
-		
-		//实际加载进度
-//		loader.addProgressListener(function(e) {
-//			var per=Math.round(e.completedCount/e.totalCount*50);
-//			loadPer.html(per+'%');
-//		});
+		loader.addImage('images/common/turn_unlock.png');
+		loader.addImage('images/common/turn_yes.png');
+		loader.addImage('images/btns/1.png');
+		loader.addImage('images/btns/2.png');
+		loader.addImage('images/btns/3.png');
+		loader.addImage('images/btns/4.png');
+		loader.addImage('images/btns/5.png');
 		
 		loader.addCompletionListener(function() {
 			init_handler();
-//			load_timer(50);//模拟加载进度
 			loader=null;
 		});
 		loader.start();	
 	}//end func
 	
-	//模拟加载进度
-	function load_timer(per){
-		per=per||0;
-		per+=imath.randomRange(1,3);
-		per=per>100?100:per;
-		loadPer.html(per+'%');
-		if(per==100) setTimeout(init_handler,200);
-		else setTimeout(load_timer,33,per);
-	}//edn func
 	
 	//----------------------------------------页面逻辑代码----------------------------------------
 	function init_handler(){
-		console.log('init handler');
-//		icom.fadeOut(loadBox,500);
+		icom.fadeOut(loadBox,500);
+		pageInit();
 		monitor_handler();
 	}//end func
-	
+
+	var formBox = $("section.formBox");
+	var sloganBox = $("section.sloganBox");
+	var photoBox = $("section.photoBox");
+	var editBox = $("section.editBox");
+	var resultBox = $("section.resultBox");
+	var tipsBox = $("#tips");
+
+	var nowPage = 0;
+	var boxs = [formBox,sloganBox,photoBox,editBox,resultBox];
+	var slogans = ["超越性能极限，领略精彩出行！","超越性能极限，领略精彩出行！2","超越性能极限，领略精彩出行！3"];
+	var icamera;
+	var iFormInfo = {
+		name:"",
+		model:"",
+		pro:"",
+		year:"",
+		slogan:"",
+		img:""
+	};
+
+	//页面初始化
+	function pageInit(){
+		yearSelectInit();
+		requestSlogans();
+		cameraInit();
+		eventInit();
+	}//end func
+
+	//事件初始化
+	function eventInit(){
+		$(".backBtn").on("touchend",prevPage);
+
+		formBox.find('.option').on("touchend",choseProduct);
+		formBox.find('.ContinueBtn').on("touchend",vefForm);
+		$("#slogan").on("input",makeSlogan);
+		sloganBox.find('.changeBtn').on("touchend",changeSlogan);
+		sloganBox.find('.ContinueBtn').on("touchend",getSlogan);
+		photoBox.find('.ContinueBtn').on("touchend",showTips);
+		tipsBox.find('.no').on("touchend",function(){icom.fadeOut(tipsBox)});
+		tipsBox.find('.yes').on("touchend",addPhotoFrame);		
+		$(".againBtn").on("touchend",function(){location.reload()});
+		editBox.find('.okBtn').on("touchend",makePoster);
+	}//end func
+
+	//生成海报
+	function makePoster(){
+		var opts = {
+			secretkey:"jiadeshi",
+			callback:showResult
+		}
+		icamera.canvasTrfImg(opts);
+	}//end func
+
+	//显示结果
+	function showResult(src){
+		resultBox.find('.show')[0].src = src;
+		resultBox.find('.down')[0].src = src;
+		icom.fadeOut(editBox);
+		icom.fadeIn(resultBox);
+	}//end func
+
+	//合成初始化
+	function cameraInit(){
+		icamera = new camera();
+		var options = {
+			scale:2,
+			filter:false,
+			loadBox:loadBox,
+			cameraBtn:$("#cameraBtn"),
+			onUpload:previewImg
+		}
+		icamera.init($("#photoContainer"),options);
+	}//end func
+
+	//显示提示
+	function showTips(){
+		if(iFormInfo.img == "") icom.alert("请上传您的照片");
+		else icom.fadeIn(tipsBox);
+	}//end func
+
+	//添加相框
+	function addPhotoFrame(){
+		creatFrame();
+		creatSlogan();
+		icamera.setBaseEvent(0.5,3);
+		editBox.removeClass('hide');
+		icom.fadeOut(photoBox);
+		icom.fadeOut(tipsBox);
+	}//end func
+
+	//创建标语
+	function creatSlogan(){
+		var titileBox = $(".sloganDemo .title");
+		var titleopts = {
+			color:"#fff",
+			x:delPX(titileBox.css('left'))/2,
+			y:delPX(titileBox.css('top'))/2,
+			fontSize:delPX(titileBox.css('fontSize'))/1.7,
+			lineHeight:1.2
+		};
+		icamera.addTextLayer("title",iFormInfo.name+" 自"+iFormInfo.year+"年使用加德士产品",titleopts);
+
+		var wordBox = $(".sloganDemo .word");
+		var sloganopts = {
+			color:"#fff",
+			x:delPX(wordBox.css('left'))/2,
+			y:delPX(wordBox.css('top'))/2,
+			fontSize:delPX(wordBox.css('fontSize'))/1.5,
+			lineHeight:1.5,
+			maxNum:11
+		};
+		icamera.addTextLayer("slogan",iFormInfo.slogan,sloganopts);
+
+		//去掉单位
+		function delPX(str){
+			return parseInt(str.split("px")[0])
+		}//end func
+	}//end func
+
+	//创建相框
+	function creatFrame(){
+		var canvas = icamera.photoCanvas;
+
+		var opts = {
+			src:"images/edit/kuang"+iFormInfo.pro+".png",
+			index:999,
+			intangible: true
+		}
+
+		icamera.img_creat("frame",canvas,opts);
+	}//end func
+
+	//预览图片
+	function previewImg(src){
+		iFormInfo.img = src;
+		$(".previewBox").html('<img src="'+src+'">');
+	}//end func
+
+	//获取标语
+	function getSlogan(){
+		iFormInfo.slogan = sloganBox.find('.word').html();
+		photoBox.find('.name').html(iFormInfo.name+" 自"+iFormInfo.year+"年使用加德士产品");
+		photoBox.find('.word').html(iFormInfo.slogan);
+		nextPage();
+	}//end func
+
+	//修改标语
+	function makeSlogan(){
+		sloganBox.find('.word').html($("#slogan").val());
+	}//end func
+
+	//变换标语
+	function changeSlogan(){
+		var i = imath.randomRange(0,slogans.length - 1);
+		sloganBox.find('.word').html(slogans[i]);
+	}//end func
+
+	//验证表单
+	function vefForm(){
+		iFormInfo.name = $("#name").val();
+		iFormInfo.model = $("#pro").val();
+		iFormInfo.year = $("#year").val();
+
+		if(iFormInfo.name == "") icom.alert("请输入您的姓名！");
+		else if(iFormInfo.model == "") icom.alert("请输入您的车型或设备！");
+		else if(iFormInfo.pro == "") icom.alert("请选择您使用的加德士产品！");
+		else if(iFormInfo.year == "") icom.alert("请选择从何时开始使用此款产品！");
+		else {
+			nextPage();
+			submitInfo();
+		}
+	}//end func
+
+	//上一页
+	function prevPage(){
+		if(nowPage > 0){
+			icom.fadeOut(boxs[nowPage]);
+			icom.fadeIn(boxs[nowPage-1]);
+			nowPage--;
+		}
+	}//end func
+
+	//下一页
+	function nextPage(){
+		if(nowPage < 5){
+			icom.fadeOut(boxs[nowPage]);
+			icom.fadeIn(boxs[nowPage+1]);
+			nowPage++;
+		}
+	}//end func
+
+	//提交信息 AJAX
+	function submitInfo(){
+		console.log(iFormInfo)
+	}//end func
+
+	//请求标语 AJAX
+	function requestSlogans(){
+
+	}//end func
+
+	//选择产品
+	function choseProduct(){
+		formBox.find('.option').removeClass('active');
+		$(this).addClass('active');
+		iFormInfo.pro = $(this).attr('data-val');
+	}//end func
+
+	//年份选择初始化
+	function yearSelectInit(){
+		var cont = "";
+		for (var i = 2018; i > 1990; i--) {
+			cont += '<option value="'+i+'">'+i+'年</option>'
+		}
+		$("#year").append(cont);
+	}//end func
 	//----------------------------------------页面监测代码----------------------------------------
 	function monitor_handler(){
-//		imonitor.add({obj:$('a.btnTest'),action:'touchstart',category:'default',label:'测试按钮'});
+		imonitor.add({obj:$('.ContinueBtn'),action:'touchstart',category:'default',label:'继续'});
+		imonitor.add({obj:$('.back'),action:'touchstart',category:'default',label:'返回'});
+		imonitor.add({obj:$('.changeBtn'),action:'touchstart',category:'default',label:'变更感言'});
+		imonitor.add({obj:$('#cameraBtn'),action:'touchstart',category:'default',label:'上传照片'});
+		imonitor.add({obj:$('.yes'),action:'touchstart',category:'default',label:'同意'});
+		imonitor.add({obj:$('.no'),action:'touchstart',category:'default',label:'不同意'});
+		imonitor.add({obj:$('.againBtn'),action:'touchstart',category:'default',label:'重新选择'});
+		imonitor.add({obj:$('.okBtn'),action:'touchstart',category:'default',label:'生成海报'});
 	}//end func
 });//end ready

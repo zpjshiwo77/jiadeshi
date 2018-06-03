@@ -1,5 +1,551 @@
 /* ---------------------------------------- 默认css针对16:9标准比例屏幕微信----------------------------------------*/
+body,html,article{
+	overflow: hidden;
+}
+.none{
+	display: none;
+}
+.hide{
+	opacity: 0;
+}
+a, a:visited{
+	color: #fff;
+}
+section{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 3;
+}
+aside{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 19;
+}
+.asd{
+	top: 0rem;
+	z-index: 9!important;
+	display: block!important;
+}
+.preView{
+	position: relative;
+	z-index: 9;
+}
+.overhide{
+	overflow: hidden;
+}
+.logo1{
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	width: 2.77rem;
+	height: 0.36rem;
+	background-image: url('../images/common/logo1.png');
+}
+.logo2{
+	position: absolute;
+	top: 0.3rem;
+	right: 0.5rem;
+	width: 0.79rem;
+	height: 1.16rem;
+	background-image: url('../images/common/logo2.png');
+}
+.arRBtn{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 2.1rem;
+	height: 0.7rem;
+}
+.arRBtn .arR{
+	float: right;
+	width: 0.8rem;
+	height: 0.54rem;
+	background-image: url('../images/common/arR.png');
+	-webkit-animation: arRing 1.5s ease infinite;
+}
+.arRBtn .ContinueBtn{
+	float: right;
+	width: 0.94rem;
+	height: 0.56rem;
+	background-image: url('../images/btns/1.png');
+}
+.arLBtn{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 2.1rem;
+	height: 0.7rem;
+}
+.arLBtn .arL{
+	float: left;
+	width: 0.82rem;
+	height: 0.54rem;
+	background-image: url('../images/common/arl.png');
+	-webkit-animation: arLing 1.5s ease infinite;
+}
+.arLBtn .backBtn{
+	float: left;
+	width: 0.94rem;
+	height: 0.56rem;
+	background-image: url('../images/btns/2.png');
+}
+/* public end */
 
+.rotating{
+	-webkit-animation: rotating 3s ease infinite;
+}
+@-webkit-keyframes rotating{
+	0%{-webkit-transform: rotate(0deg);}
+	100%{-webkit-transform: rotate(360deg);}
+}
+.arTing{
+	-webkit-animation: arTing 2s ease infinite;
+}
+@-webkit-keyframes arTing{
+	0%{-webkit-transform: translate(0, 0);}
+	50%{-webkit-transform: translate(0, -0.1rem);}
+	100%{-webkit-transform: translate(0, 0);}
+}
+
+@-webkit-keyframes arLing{
+	0%{-webkit-transform: translate(0, 0);}
+	50%{-webkit-transform: translate(-0.1rem, 0);}
+	100%{-webkit-transform: translate(0, 0);}
+}
+
+@-webkit-keyframes arRing{
+	0%{-webkit-transform: translate(0, 0);}
+	50%{-webkit-transform: translate(0.1rem, 0);}
+	100%{-webkit-transform: translate(0, 0);}
+}
+/* anime end */
+
+section.formBox{
+	background: url('../images/index/bg.jpg') no-repeat;
+	background-size: cover;
+}
+section.formBox .cont{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 6rem;
+	height: 8.5rem;
+	-webkit-transform: translate(-50%, -45%);
+}
+section.formBox .cont .label{
+	width: 4.3rem;
+	height: 1.8rem;
+	margin: 0 auto;
+	position: relative;
+}
+section.formBox .cont .label.sp{
+	height: 1.5rem;
+}
+section.formBox .cont .label p{
+	font-size: 0.32rem;
+	color: #fff;
+	text-shadow: 0.05rem 0.05rem 0.1rem rgba(0,0,0,0.3);
+	padding-bottom: 0.25rem;
+}
+section.formBox .cont .label.select:before{
+	content: "▲";
+    position: absolute;
+    top: 0.77rem;
+    left: 1.2rem;
+    color: #fff;
+    font-size: 0.25rem;
+    -webkit-transform: rotate(180deg);
+}
+section.formBox .cont .label input,section.formBox .cont .label select{
+	width: 100%;
+	height: 0.6rem;
+	border: 0.03rem solid #fff;
+	background: rgba(255,255,255,0.3);
+	font-size: 0.32rem;
+	color: #fff;
+	padding: 0 0.3rem;
+	text-align: center;
+}
+section.formBox .cont .label select{
+	padding: 0 0 0 1.65rem;
+}
+section.formBox .cont .label .option{
+	width: 40%;
+	height: 0.5rem;
+	padding-left: 0.6rem;
+	font-size: 0.32rem;
+	color: #fff;
+	text-shadow: 0.05rem 0.05rem 0.1rem rgba(0,0,0,0.3);
+	position: relative;
+}
+section.formBox .cont .label .option:before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0.38rem;
+	height: 0.38rem;
+	background-image: url('../images/index/k.png');
+	background-size: 100% 100%;
+}
+section.formBox .cont .label .option.active:before{
+	background-image: url('../images/index/ka.png');
+}
+section.formBox .cont .label .option.ol{
+	float: left;
+}
+section.formBox .cont .label .option.or{
+	float: right;
+	text-align: right;
+}
+/* formBox end */
+
+section.sloganBox{
+	background: url('../images/edit/bg1.jpg') no-repeat;
+	background-size: cover;
+}
+section.sloganBox .cont{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 6rem;
+	height: 8.5rem;
+	-webkit-transform: translate(-50%, -45%);
+}
+section.sloganBox .cont .kuang{
+	width: 5.4rem;
+	height: 6.75rem;
+	margin: 0 auto;
+	background: rgba(0,0,0,0.2);
+	border: 1px solid #fff;
+}
+section.sloganBox .cont .kuang .title{
+	width: 3.56rem;
+	height: 0.63rem;
+	background-image: url('../images/edit/title1.png');
+	margin: 0.25rem auto 0.4rem;
+}
+section.sloganBox .cont .kuang P{
+	font-size: 0.35rem;
+	color: #fff;
+	text-shadow: 0.05rem 0.05rem 0.1rem rgba(0,0,0,0.3);
+	padding-bottom: 0.3rem;
+	padding-left: 0.4rem;
+	font-weight: bold;
+}
+section.sloganBox .cont .kuang .word{
+	font-size: 0.3rem;
+	color: #fff;
+	height: 3rem;
+	padding: 0 0.4rem 0.3rem;
+	line-height: 1.5;
+}
+section.sloganBox .cont .kuang .changeBtn{
+	width: 1.56rem;
+	height: 0.59rem;
+	background-image: url('../images/edit/wbtn.png');
+	margin: 0 auto 0.5rem;
+}
+section.sloganBox .cont .kuang #slogan{
+	display: block;
+	width: 4.6rem;
+	height: 0.5rem;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 0.24rem;
+	color: #fff;
+}
+/* sloganBox end */
+
+section.photoBox{
+	background: url('../images/edit/bg2.jpg') no-repeat;
+	background-size: cover;
+}
+section.photoBox .kuang{
+	position: absolute;
+	top: 0.525rem;
+	left: 0.525rem;
+	bottom: 0.525rem;
+	right: 0.525rem;
+}
+section.photoBox .kuang:before{
+	content: "";
+	display: block;
+	width: 6.45rem;
+	height: 0.9rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url('../images/edit/u.png');
+	background-size: 100% 100%;
+}
+section.photoBox .kuang:after{
+	content: "";
+	display: block;
+	width: 6.45rem;
+	height: 0.9rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-image: url('../images/edit/d.png');
+	background-size: 100% 100%;
+}
+section.photoBox .kuang .cont{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 5.7rem;
+	height: 9rem;
+	-webkit-transform: translate(-50%, -50%);
+}
+section.photoBox .kuang .cont .previewBox{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 1.41rem;
+	height: 1.39rem;
+	margin-left: -0.705rem;
+	overflow: hidden;
+	border-radius: 50%;
+}
+section.photoBox .kuang .cont .previewBox img{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	-webkit-transform: translate(0, -50%);
+}
+section.photoBox .kuang .cont #cameraBtn{
+	width: 1.41rem;
+	height: 1.39rem;
+	background-image: url('../images/edit/cbtn.png');
+	margin: 0 auto;
+	position: relative;
+	z-index: 3;
+}
+section.photoBox .kuang .cont .tips{
+	width: 2.67rem;
+	height: 0.63rem;
+	background-image: url('../images/edit/w.png');
+	margin: 0.6rem auto 1rem;
+}
+section.photoBox .kuang .cont .tips .ar{
+	position: absolute;
+	top: -0.3rem;
+	left: 50%;
+	margin-left: -0.165rem;
+	width: 0.33rem;
+	height: 0.22rem;
+	background-image: url('../images/edit/ar.png');
+}
+section.photoBox .kuang .cont .words{
+	width: 5.4rem;
+	height: 4.4rem;
+	margin: 0 auto;
+	background: rgba(0,0,0,0.3);
+	border: 1px solid #fff;
+}
+section.photoBox .kuang .cont .words .title{
+	width: 4.11rem;
+	height: 0.73rem;
+	background-image: url('../images/edit/title2.png');
+	margin: 0.15rem auto;
+}
+section.photoBox .kuang .cont .words p{
+	padding: 0 0.5rem;
+	font-size: 0.3rem;
+	color: #fff;
+	line-height: 1.5;
+}
+section.photoBox .kuang .cont .words p.name{
+	font-size: 0.24rem;
+	padding-bottom: 0.15rem;
+	text-align: center;
+}
+/* photoBox end */
+
+#tips .cont{
+	position: absolute;
+	top: 0.25rem;
+	left: 0.25rem;
+	bottom: 0.25rem;
+	right: 0.25rem;
+	background: rgba(0,0,0,0.7);
+}
+#tips .cont .word{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+}
+#tips .cont .word h3{
+	text-align: center;
+	font-size: 0.32rem;
+	color: #fff;
+	padding-bottom: 0.3rem;
+}
+#tips .cont .word .btns{
+	width: 3.7rem;
+	height: auto;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#tips .cont .word .btns .btn{
+	width: 1.75rem;
+}
+#tips .cont .word .btns .btn.no{
+	float: left;
+	height: 0.65rem;
+	background-image: url('../images/edit/no.png');
+}
+#tips .cont .word .btns .btn.yes{
+	float: right;
+	height: 0.7rem;
+	background-image: url('../images/edit/yes.png');
+}
+#tips .cont .word p{
+	padding: 0.3rem 0.5rem 0.5rem;
+	font-size: 0.26rem;
+	color: #fff;
+	line-height: 1.5;
+}
+/* tips end */
+
+section.editBox{
+	background: url('../images/edit/bg3.jpg') no-repeat;
+	background-size: cover;
+	z-index: 2;
+}
+section.editBox .cont{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 7.04rem;
+	height: 8rem;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+section.editBox .cont .photoBox{
+	width: 7.04rem;
+	height: 3.89rem;
+	position: relative;
+	overflow: hidden;
+}
+section.editBox .cont .photoBox .photo{
+	width: 100%;
+	height: 100%;
+}
+section.editBox .cont .photoBox .photo canvas{
+	transform-origin: top left;
+}
+section.editBox .cont .tips{
+	width: 4.57rem;
+	height: 2.16rem;
+	background-image: url('../images/edit/tips.png');
+	margin-left: 0.6rem;
+}
+section.editBox .cont .arLBtn,section.editBox .cont .arRBtn{
+	width: 3rem;
+}
+section.editBox .cont .againBtn{
+	float: left;
+	width: 1.66rem;
+	height: 0.41rem;
+	background-image: url('../images/btns/3.png');
+	margin-top: 0.05rem;
+}
+section.editBox .cont .okBtn{
+	float: right;
+	width: 1.87rem;
+	height: 0.61rem;
+	background-image: url('../images/btns/4.png');
+}
+
+section.editBox .sloganDemo{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 14.08rem;
+	height: 7.78rem;
+	background-image: url('../images/edit/kuang1.png');
+}
+section.editBox .sloganDemo .title{
+	color: #fff;
+	font-size: 0.22rem;
+	width: 4.4rem;
+	position: absolute;
+	top: 1.5rem;
+	left: 9.1rem;
+}
+section.editBox .sloganDemo .word{
+	color: #fff;
+	font-size: 0.24rem;
+	width: 4.4rem;
+	position: absolute;
+	top: 2rem;
+	left: 10.2rem;
+	line-height: 1.5;
+}
+/* editBox end */
+
+section.resultBox{
+	background: #000;
+}
+section.resultBox .cont{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 7.5rem;
+	height: 10.2rem;
+	margin-top: -5.1rem;
+}
+section.resultBox .cont .arLBtn{
+	top: 0;
+	left: 1rem;
+	width: 3rem;
+	z-index: 3;
+}
+section.resultBox .cont .againBtn{
+	float: left;
+	width: 1.65rem;
+	height: 0.4rem;
+	background-image: url('../images/btns/5.png');
+}
+section.resultBox .cont .show{
+	position: absolute;
+	top: 45%;
+	left: 0;
+	width: 100%;
+	-webkit-transform: translate(0, -50%);
+}
+section.resultBox .cont .tipsBtn{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 1.73rem;
+	height: 2.02rem;
+	background-image: url('../images/edit/abtn.png');
+	margin-left: -0.865rem;
+}
+section.resultBox .cont .down{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+/* resultBox end */
 /*---------------------------------------- 15:9 android 微信 && 16:9 浏览器----------------------*/
 @media screen and (device-width:360px) and (max-height:540px), screen and (device-width:320px) and (max-height:470px), screen and (device-width:375px) and (max-height:560px), screen and (device-width:414px) and (max-height:630px){
 

@@ -49,7 +49,7 @@ var camera = function(){
     	_self.photoCanvas = imgCanvas;
     	stkRemoveBtn = _self.opts.stkRemoveBtn;
 
-    	btnCamera = box.find('.btnCamera');
+    	btnCamera = _self.opts.cameraBtn;
     	jcanvasScale = _self.opts.scale;
     	if(_self.opts.onUpload) onUpload = _self.opts.onUpload;
 
@@ -289,7 +289,7 @@ var camera = function(){
 			ireader.read({ file: file, callback: function (resp,wd,ht) {
                 if (resp){
                 	loadBox.hide();
-                	btnCamera.hide();
+                	// btnCamera.hide();
 
 					imgSourceData={};
             		imgSourceData.src=resp;

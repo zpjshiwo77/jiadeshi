@@ -138,10 +138,12 @@ section.formBox .cont{
 	width: 6rem;
 	height: 8.5rem;
 	-webkit-transform: translate(-50%, -45%);
+	background: rgba(0, 0, 0, 0.6);
+	padding-top: 0.5rem;
 }
 section.formBox .cont .label{
 	width: 4.3rem;
-	height: 1.8rem;
+	height: 1.7rem;
 	margin: 0 auto;
 	position: relative;
 }

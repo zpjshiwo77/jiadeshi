@@ -299,7 +299,7 @@ $(document).ready(function(){
 	//----------------------------------------页面监测代码----------------------------------------
 	function monitor_handler(){
 		imonitor.add({obj:$('.ContinueBtn'),action:'touchstart',category:'default',label:'继续'});
-		imonitor.add({obj:$('.back'),action:'touchstart',category:'default',label:'返回'});
+		imonitor.add({obj:$('.backBtn'),action:'touchstart',category:'default',label:'返回'});
 		imonitor.add({obj:$('.changeBtn'),action:'touchstart',category:'default',label:'变更感言'});
 		imonitor.add({obj:$('#cameraBtn'),action:'touchstart',category:'default',label:'上传照片'});
 		imonitor.add({obj:$('.yes'),action:'touchstart',category:'default',label:'同意'});

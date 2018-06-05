@@ -113,7 +113,7 @@ $(document).ready(function(){
 
 		formBox.find('.option').on("touchend",choseProduct);
 		formBox.find('.ContinueBtn').on("touchend",vefForm);
-		$("#slogan").on("input",makeSlogan);
+		// $("#slogan").on("input",makeSlogan);
 		sloganBox.find('.changeBtn').on("touchend",changeSlogan);
 		sloganBox.find('.ContinueBtn').on("touchend",getSlogan);
 		photoBox.find('.ContinueBtn').on("touchend",showTips);
@@ -232,7 +232,7 @@ $(document).ready(function(){
 
 	//获取标语
 	function getSlogan(){
-		iFormInfo.slogan = sloganBox.find('.word').html();
+		iFormInfo.slogan = $('#slogan').val();
 		photoBox.find('.name').html(iFormInfo.name+" 自"+iFormInfo.year+"年使用加德士产品");
 		photoBox.find('.word').html(iFormInfo.slogan);
 		nextPage();
@@ -246,7 +246,7 @@ $(document).ready(function(){
 	//变换标语
 	function changeSlogan(){
 		var i = imath.randomRange(0,slogans.length - 1);
-		sloganBox.find('.word').html(slogans[i]);
+		$('#slogan').val(slogans[i]);
 	}//end func
 
 	//验证表单

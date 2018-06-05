@@ -234,7 +234,7 @@ section.sloganBox .cont .kuang .title{
 	background-image: url('../images/edit/title1.png');
 	margin: 0.25rem auto 0.4rem;
 }
-section.sloganBox .cont .kuang P{
+section.sloganBox .cont .kuang p{
 	font-size: 0.35rem;
 	color: #fff;
 	text-shadow: 0.05rem 0.05rem 0.1rem rgba(0,0,0,0.3);
@@ -242,9 +242,10 @@ section.sloganBox .cont .kuang P{
 	padding-left: 0.4rem;
 	font-weight: bold;
 }
-section.sloganBox .cont .kuang .word{
+section.sloganBox .cont .kuang #slogan{
 	font-size: 0.3rem;
 	color: #fff;
+	width: 100%;
 	height: 3rem;
 	padding: 0 0.4rem 0.3rem;
 	line-height: 1.5;
@@ -255,8 +256,7 @@ section.sloganBox .cont .kuang .changeBtn{
 	background-image: url('../images/edit/wbtn.png');
 	margin: 0 auto 0.5rem;
 }
-section.sloganBox .cont .kuang #slogan{
-	display: block;
+section.sloganBox .cont .kuang .word{
 	width: 4.6rem;
 	height: 0.5rem;
 	margin: 0 auto;

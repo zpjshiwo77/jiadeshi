@@ -162,15 +162,28 @@ $(document).ready(function(){
 	//添加相框
 	function addPhotoFrame(){
 		creatFrame();
-		creatSlogan();
+		var word = countSloganSize();
+		creatSlogan(word);
 		icamera.setBaseEvent(0.5,3);
 		editBox.removeClass('hide');
 		icom.fadeOut(photoBox);
 		icom.fadeOut(tipsBox);
 	}//end func
 
+	//计算标语字体大小
+	function countSloganSize(){
+		var word = {
+			size:0.7,
+			num:5
+		};
+		var deviation = Math.ceil(iFormInfo.slogan.length / 10) - 1;
+		word.size += deviation*0.1375;
+		word.num += deviation;
+		return word;
+	}//end func
+
 	//创建标语
-	function creatSlogan(){
+	function creatSlogan(word){
 		var titileBox = $(".sloganDemo .title");
 		var titleopts = {
 			color:"#fff",
@@ -186,9 +199,9 @@ $(document).ready(function(){
 			color:"#fff",
 			x:delPX(wordBox.css('left'))/2,
 			y:delPX(wordBox.css('top'))/2,
-			fontSize:delPX(wordBox.css('fontSize'))/1.8,
+			fontSize:delPX(wordBox.css('fontSize'))/word.size,
 			lineHeight:1.3,
-			maxNum:13
+			maxNum:word.num
 		};
 		icamera.addTextLayer("slogan",iFormInfo.slogan,sloganopts);
 

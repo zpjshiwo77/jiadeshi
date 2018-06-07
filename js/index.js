@@ -88,6 +88,7 @@ $(document).ready(function(){
 	var tipsBox = $("#tips");
 
 	var nowPage = 0;
+	var backFlag = false;
 	var boxs = [formBox,sloganBox,photoBox,editBox,resultBox];
 	var slogans = [];
 	var icamera;
@@ -119,7 +120,8 @@ $(document).ready(function(){
 		photoBox.find('.ContinueBtn').on("touchend",showTips);
 		tipsBox.find('.no').on("touchend",function(){icom.fadeOut(tipsBox)});
 		tipsBox.find('.yes').on("touchend",addPhotoFrame);		
-		$(".againBtn").on("touchend",function(){location.reload()});
+		editBox.find(".againBtn").on("touchend",choseAgain);
+		resultBox.find(".againBtn").on("touchend",function(){location.reload()});
 		editBox.find('.okBtn').on("touchend",makePoster);
 	}//end func
 
@@ -138,6 +140,16 @@ $(document).ready(function(){
 		resultBox.find('.down')[0].src = src;
 		icom.fadeOut(editBox);
 		icom.fadeIn(resultBox);
+	}//end func
+
+	//重新选择
+	function choseAgain(){
+		backFlag = false;
+		photoBox.find('.previewBox').hide();
+		photoBox.find('.arRBtn').hide();
+		icom.fadeIn(photoBox,500,function(){
+			editBox.addClass('hide');
+		});
 	}//end func
 
 	//合成初始化
@@ -184,6 +196,16 @@ $(document).ready(function(){
 
 	//创建标语
 	function creatSlogan(word){
+		var nameBox = $(".sloganDemo .name");
+		var nameopts = {
+			color:"#fff",
+			x:delPX(nameBox.css('left'))/2 - delPX(nameBox.css('fontSize'))/1.7 * (iFormInfo.name.length - 1),
+			y:delPX(nameBox.css('top'))/2,
+			fontSize:delPX(nameBox.css('fontSize'))/1.7,
+			lineHeight:1.2
+		};
+		icamera.addTextLayer("name",iFormInfo.name,nameopts);
+
 		var titileBox = $(".sloganDemo .title");
 		var titleopts = {
 			color:"#fff",
@@ -192,7 +214,7 @@ $(document).ready(function(){
 			fontSize:delPX(titileBox.css('fontSize'))/1.7,
 			lineHeight:1.2
 		};
-		icamera.addTextLayer("title",iFormInfo.name+" 自"+iFormInfo.year+"年使用加德士产品",titleopts);
+		icamera.addTextLayer("title","自"+iFormInfo.year+"年使用加德士产品",titleopts);
 
 		var wordBox = $(".sloganDemo .word");
 		var sloganopts = {
@@ -227,7 +249,9 @@ $(document).ready(function(){
 	//预览图片
 	function previewImg(src){
 		iFormInfo.img = src;
-		$(".previewBox").html('<img src="'+src+'">');
+		$(".previewBox").show().html('<img src="'+src+'">');
+		photoBox.find('.arRBtn').show();
+		backFlag = true;
 	}//end func
 
 	//获取标语
@@ -271,7 +295,12 @@ $(document).ready(function(){
 
 	//上一页
 	function prevPage(){
-		if(nowPage > 0){
+		if(backFlag){
+			icom.fadeOut(photoBox.find('.previewBox'));
+			icom.fadeOut(photoBox.find('.arRBtn'));
+			backFlag = false;
+		}
+		else if(nowPage > 0){
 			icom.fadeOut(boxs[nowPage]);
 			icom.fadeIn(boxs[nowPage-1]);
 			nowPage--;

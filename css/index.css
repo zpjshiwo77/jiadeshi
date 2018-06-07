@@ -312,11 +312,11 @@ section.photoBox .kuang .cont .previewBox{
 	position: absolute;
 	top: 0;
 	left: 50%;
-	width: 1.41rem;
-	height: 1.39rem;
-	margin-left: -0.705rem;
+	width: 5.4rem;
+	height: 3.22rem;
+	margin-left: -2.7rem;
 	overflow: hidden;
-	border-radius: 50%;
+	z-index: 4;
 }
 section.photoBox .kuang .cont .previewBox img{
 	width: 100%;
@@ -371,6 +371,15 @@ section.photoBox .kuang .cont .words p.name{
 	font-size: 0.24rem;
 	padding-bottom: 0.15rem;
 	text-align: center;
+}
+section.photoBox .cont .arRBtn{
+	width: 3rem;
+}
+section.photoBox .cont .ContinueBtn{
+	float: right;
+	width: 1.87rem;
+	height: 0.61rem;
+	background-image: url('../images/btns/4.png');
 }
 /* photoBox end */
 
@@ -482,13 +491,21 @@ section.editBox .sloganDemo{
 	height: 7.78rem;
 	background-image: url('../images/edit/kuang1.png');
 }
+section.editBox .sloganDemo .name{
+	color: #fff;
+	font-size: 0.22rem;
+	width: 4.4rem;
+	position: absolute;
+	top: 1.5rem;
+	left: 10.4rem;
+}
 section.editBox .sloganDemo .title{
 	color: #fff;
 	font-size: 0.22rem;
 	width: 4.4rem;
 	position: absolute;
 	top: 1.5rem;
-	left: 9.1rem;
+	left: 10.8rem;
 }
 section.editBox .sloganDemo .word{
 	color: #fff;

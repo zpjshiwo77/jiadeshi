@@ -113,6 +113,14 @@ aside{
 	50%{-webkit-transform: translate(0, -0.1rem);}
 	100%{-webkit-transform: translate(0, 0);}
 }
+.arwTing{
+	-webkit-animation: arwTing 2s ease infinite;
+}
+@-webkit-keyframes arwTing{
+	0%{-webkit-transform: translate(0, -0.05rem);}
+	50%{-webkit-transform: translate(0, 0.05rem);}
+	100%{-webkit-transform: translate(0, -0.05rem);}
+}
 
 @-webkit-keyframes arLing{
 	0%{-webkit-transform: translate(0, 0);}
@@ -251,10 +259,15 @@ section.sloganBox .cont .kuang #slogan{
 	line-height: 1.5;
 }
 section.sloganBox .cont .kuang .changeBtn{
-	width: 1.56rem;
-	height: 0.59rem;
+	width: 2.81rem;
+	height: 0.69rem;
 	background-image: url('../images/edit/wbtn.png');
 	margin: 0 auto 0.5rem;
+}
+section.sloganBox .cont .kuang .changeBtn .ar{
+	width: 100%;
+	height: 100%;
+	background-image: url('../images/edit/war.png');
 }
 section.sloganBox .cont .kuang .word{
 	width: 4.6rem;
@@ -313,7 +326,7 @@ section.photoBox .kuang .cont .previewBox{
 	top: 0;
 	left: 50%;
 	width: 5.4rem;
-	height: 3.22rem;
+	height: 3.1rem;
 	margin-left: -2.7rem;
 	overflow: hidden;
 	z-index: 4;
@@ -326,8 +339,8 @@ section.photoBox .kuang .cont .previewBox img{
 	-webkit-transform: translate(0, -50%);
 }
 section.photoBox .kuang .cont #cameraBtn{
-	width: 1.41rem;
-	height: 1.39rem;
+	width: 1.71rem;
+	height: 1.67rem;
 	background-image: url('../images/edit/cbtn.png');
 	margin: 0 auto;
 	position: relative;
@@ -337,7 +350,7 @@ section.photoBox .kuang .cont .tips{
 	width: 2.67rem;
 	height: 0.63rem;
 	background-image: url('../images/edit/w.png');
-	margin: 0.6rem auto;
+	margin: 0.6rem auto 0.2rem;
 }
 section.photoBox .kuang .cont .tips .ar{
 	position: absolute;

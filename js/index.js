@@ -13,9 +13,29 @@ $(document).ready(function(){
 		requestAnimationFrame(function(){
 			loadBox.show();
 			iuser.init(userGetted);
+			// fontAutoLimit();
 //			load_handler();
 		});
 	}//edn func
+
+	//字体限制
+	function fontAutoLimit(){
+		if(os.weixin) {
+			if (typeof(WeixinJSBridge) == "undefined") { 
+			    document.addEventListener("WeixinJSBridgeReady", function (e) { 
+			        setTimeout(function(){ 
+			            WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize':0}, function(res){ 
+			            }) 
+			        }, 500) 
+			    }); 
+			}else{   
+			    setTimeout(function(){ 
+			        WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize':0}, function(res){ 
+			        }) 
+			    }, 500)    
+			} 
+		}//edn if
+	}//end func
 	
 	//----------------------------------------微信用户登录验证----------------------------------------	
 	function userGetted(data){

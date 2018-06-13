@@ -120,6 +120,7 @@ $(document).ready(function(){
 		slogan:"",
 		img:""
 	};
+	var nowSlogan = 0;
 
 	//页面初始化
 	function pageInit(){
@@ -294,8 +295,10 @@ $(document).ready(function(){
 
 	//变换标语
 	function changeSlogan(){
-		var i = imath.randomRange(0,slogans.length - 1);
-		$('#slogan').val(slogans[i]);
+		// var i = imath.randomRange(0,slogans.length - 1);
+		nowSlogan = nowSlogan >= slogans.length ? 0 : nowSlogan;
+		$('#slogan').val(slogans[nowSlogan]);
+		nowSlogan ++;
 	}//end func
 
 	//验证表单
@@ -315,6 +318,7 @@ $(document).ready(function(){
 			icamera.userPro = iFormInfo.pro == "1" ? "德乐" : "金富力";
 			nextPage();
 			submitInfo();
+			nowSlogan = 0;
 		}
 	}//end func
 

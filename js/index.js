@@ -126,6 +126,7 @@ $(document).ready(function(){
 		yearSelectInit();
 		cameraInit();
 		eventInit();
+		if(os.android) $(".shadow").show();
 	}//end func
 
 	//事件初始化

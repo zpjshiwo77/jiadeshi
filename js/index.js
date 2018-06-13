@@ -143,6 +143,7 @@ $(document).ready(function(){
 		editBox.find(".againBtn").on("touchend",choseAgain);
 		resultBox.find(".againBtn").on("touchend",function(){location.reload()});
 		editBox.find('.okBtn').on("touchend",makePoster);
+		$("#slogan").focus(function(){$("#slogan").val("");});
 	}//end func
 
 	//生成海报
@@ -277,9 +278,12 @@ $(document).ready(function(){
 	//获取标语
 	function getSlogan(){
 		iFormInfo.slogan = $('#slogan').val();
-		photoBox.find('.name').html(iFormInfo.name+" 自"+iFormInfo.year+"年使用加德士产品");
-		photoBox.find('.word').html(iFormInfo.slogan);
-		nextPage();
+		if(iFormInfo.slogan == "") icom.alert("请选择或输入您的感言！");
+		else{
+			photoBox.find('.name').html(iFormInfo.name+" 自"+iFormInfo.year+"年使用加德士产品");
+			photoBox.find('.word').html(iFormInfo.slogan);
+			nextPage();
+		}
 	}//end func
 
 	//修改标语
